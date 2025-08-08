@@ -1,0 +1,14 @@
+[
+  {
+    "id": "col1",
+    "name": "Favorites",
+    "playerId": "player1",
+    "gameIds": ["game1", "game2", "game3"]
+  },
+  {
+    "id": "col2",
+    "name": "Backlog",
+    "playerId": "player2",
+    "gameIds": ["game4"]
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "game1",
+    "title": "Cyber Adventure",
+    "genre": "Action",
+    "platform": "PC",
+    "releaseDate": "2021-11-15"
+  },
+  {
+    "id": "game2",
+    "title": "Mystery Quest",
+    "genre": "Puzzle",
+    "platform": "PS5",
+    "releaseDate": "2020-07-30"
+  },
+  {
+    "id": "game3",
+    "title": "Racing Rush",
+    "genre": "Racing",
+    "platform": "XBOX",
+    "releaseDate": "2019-05-22"
+  },
+  {
+    "id": "game4",
+    "title": "Witcher 3 wild hunt",
+    "genre": "rpg",
+    "platform": "PS5",
+    "releaseDate": "2025-07-10"
+  }
+]

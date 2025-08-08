@@ -1,0 +1,20 @@
+[
+  {
+    "id": "player1-game1",
+    "playerId": "player1",
+    "gameId": "game1",
+    "status": "PLAYING"
+  },
+  {
+    "id": "player1-game2",
+    "playerId": "player1",
+    "gameId": "game2",
+    "status": "COMPLETED"
+  },
+  {
+    "id": "player2-game1",
+    "playerId": "player2",
+    "gameId": "game1",
+    "status": "NOT_STARTED"
+  }
+]

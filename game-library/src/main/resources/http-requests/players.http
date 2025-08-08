@@ -1,0 +1,42 @@
+### Get all players
+GET http://localhost:8080/api/players
+Accept: application/json
+
+###
+
+### Get player by ID
+GET http://localhost:8080/api/players/player1
+Accept: application/json
+
+###
+
+### Create a new player
+POST http://localhost:8080/api/players
+Content-Type: application/json
+
+{
+  "id": "player3",
+  "username": "testuser",
+  "email": "testuser@example.com",
+  "birthDate": "1990-05-10"
+}
+
+###
+
+### Update an existing player
+PUT http://localhost:8080/api/players/player3
+Content-Type: application/json
+
+{
+  "id": "player123",
+  "username": "updateduser",
+  "email": "updateduser@example.com",
+  "birthDate": "1990-05-10"
+}
+
+###
+
+### Delete a player
+DELETE http://localhost:8080/api/players/player3
+
+###

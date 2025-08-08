@@ -1,0 +1,44 @@
+### Get all game collections
+GET http://localhost:8080/api/collections
+Accept: application/json
+
+### Get collections by player ID
+GET http://localhost:8080/api/collections/player/player1
+Accept: application/json
+
+###
+
+### Get collection by ID
+GET http://localhost:8080/api/collections/col1
+
+###
+
+### Create a new collection
+POST http://localhost:8080/api/collections
+Content-Type: application/json
+
+{
+  "id": "col4",
+  "name": "Favorites",
+  "playerId": "player2",
+  "gameIds": ["game1", "game2"]
+}
+
+###
+
+### Add a game to a collection
+PUT http://localhost:8080/api/collections/col1/add/game4
+Accept: application/json
+
+###
+
+### Remove a game from a collection
+PUT http://localhost:8080/api/collections/col1/remove/game4
+Accept: application/json
+
+###
+
+### Delete a collection by ID
+DELETE http://localhost:8080/api/collections/col3
+
+###

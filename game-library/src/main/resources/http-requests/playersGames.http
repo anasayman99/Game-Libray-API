@@ -1,0 +1,45 @@
+### Get games by player ID
+GET http://localhost:8080/api/player-games/player/player1
+Accept: application/json
+
+###
+
+### Get player-game entries by game ID
+GET http://localhost:8080/api/player-games/game/game1
+Accept: application/json
+
+###
+
+### Save new player-game entry
+POST http://localhost:8080/api/player-games
+Content-Type: application/json
+
+{
+  "playerId": "player2",
+  "gameId": "game2",
+  "status": "PLAYING"
+}
+###
+
+### Get players by game ID
+GET http://localhost:8080/api/player-games/players-by-game/game1
+Accept: application/json
+
+###
+
+### Get games by player and status
+GET http://localhost:8080/api/player-games/status/player1?status=PLAYING
+Accept: application/json
+
+###
+
+### Update status of a player-game entry
+PUT http://localhost:8080/api/player-games/status?playerId=player1&gameId=game1&status=COMPLETED
+Accept: application/json
+
+###
+
+### Delete a player-game entry by ID
+DELETE http://localhost:8080/api/player-games/686ff3fd114ae8cc3f12751b
+
+###

@@ -1,0 +1,44 @@
+### Get all games
+GET http://localhost:8080/api/games
+Accept: application/json
+
+###
+
+### Get a game by ID
+GET http://localhost:8080/api/games/game1
+Accept: application/json
+
+###
+
+### Create a new game
+POST http://localhost:8080/api/games
+Content-Type: application/json
+
+{
+  "id": "game5",
+  "title": "BG3",
+  "genre": "Adventure",
+  "platform": "PC",
+  "releaseDate": "2023-01-01"
+}
+
+###
+
+### Update an existing game
+PUT http://localhost:8080/api/games/game4
+Content-Type: application/json
+
+{
+  "id": "game5",
+  "title": "Updated bg3",
+  "genre": "RPG",
+  "platform": "PC",
+  "releaseDate": "2023-01-01"
+}
+
+###
+
+### Delete a game
+DELETE http://localhost:8080/api/games/game5
+
+###
