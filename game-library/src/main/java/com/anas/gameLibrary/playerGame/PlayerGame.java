@@ -1,5 +1,6 @@
-package com.anas.gameLibrary.player;
+package com.anas.gameLibrary.playerGame;
 
+import com.anas.gameLibrary.player.GameStatus;
 import jakarta.validation.constraints.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

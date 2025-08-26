@@ -1,5 +1,7 @@
 package com.anas.gameLibrary.player;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/players")
+@Tag(name = "Players", description = "Endpoints for managing player entities")
 public class PlayerController {
 
     private static final Logger log = LoggerFactory.getLogger(PlayerController.class);
@@ -35,6 +38,7 @@ public class PlayerController {
      * @return a list of all player records
      */
     @GetMapping
+    @Operation(summary = "Get all players", description = "Returns a list of all player records")
     public ResponseEntity<List<Player>> getAllPlayers() {
         log.info("Received request to get all players");
         return ResponseEntity.ok(playerService.getAllPlayers());
@@ -47,6 +51,7 @@ public class PlayerController {
      * @return the player record if found, or 404 Not Found
      */
     @GetMapping("/{id}")
+    @Operation(summary = "Get player by ID", description = "Returns a single player record by its ID")
     public ResponseEntity<Player> getPlayerById(@PathVariable String id) {
         log.info("Received request to get player with ID: {}\"", id);
         return playerService.getPlayerById(id)
@@ -67,6 +72,7 @@ public class PlayerController {
      * @return the created player record
      */
     @PostMapping
+    @Operation(summary = "Create player", description = "Creates a new player record")
     public ResponseEntity<Player> createPlayer(@Valid @RequestBody Player player) {
         log.info("Received request to create player: {}", player.username());
         return ResponseEntity.ok(playerService.savePlayer(player));
@@ -80,6 +86,7 @@ public class PlayerController {
      * @return the updated player if found, or 404 Not Found
      */
     @PutMapping("/{id}")
+    @Operation(summary = "Update player", description = "Updates an existing player record")
     public ResponseEntity<Player> updatePlayer(@PathVariable String id, @Valid @RequestBody Player updatedPlayer) {
         log.info("Received request to update player with ID: {}\"", id);
         return playerService.updatePlayer(id, updatedPlayer)
@@ -100,6 +107,7 @@ public class PlayerController {
      * @return 204 No Content if deleted, or 404 Not Found if not found
      */
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete player", description = "Deletes a player record by its ID")
     public ResponseEntity<Void> deletePlayer(@PathVariable String id) {
         log.info("Received request to delete player with ID: {}", id);
         if (playerService.deletePlayer(id)) {

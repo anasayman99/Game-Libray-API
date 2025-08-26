@@ -1,5 +1,7 @@
 package com.anas.gameLibrary.game;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/games")
+@Tag(name = "Games", description = "Endpoints for managing game entities")
 public class GameController {
     private static final Logger log = LoggerFactory.getLogger(GameController.class);
 
@@ -36,6 +39,7 @@ public class GameController {
      * @return a list of all games, or 204 No Content if none exist
      */
     @GetMapping
+    @Operation(summary = "Get all games", description = "Returns a list of all games")
     public ResponseEntity<List<Game>> getAllGames() {
         log.info("Received request to get all games");
 
@@ -53,6 +57,7 @@ public class GameController {
      * @return the game if found, or 404 Not Found
      */
     @GetMapping("/{id}")
+    @Operation(summary = "Get game by ID", description = "Returns a single game by its ID")
     public ResponseEntity<Game> getGameById(@PathVariable String id) {
         log.info("Received request to get game with ID: {}", id);
 
@@ -68,6 +73,7 @@ public class GameController {
      * @return the created game
      */
     @PostMapping
+    @Operation(summary = "Create game", description = "Creates a new game entity")
     public ResponseEntity<Game> createGame(@Valid @RequestBody Game game) {
         log.info("Received request to create game: {}", game.title());
 
@@ -82,6 +88,7 @@ public class GameController {
      * @return the updated game if found, or 404 Not Found
      */
     @PutMapping("/{id}")
+    @Operation(summary = "Update game", description = "Updates an existing game entity")
     public ResponseEntity<Game> updateGame(@PathVariable String id, @Valid @RequestBody Game game) {
         log.info("Received request to update game with ID: {}", id);
 
@@ -97,6 +104,7 @@ public class GameController {
      * @return 204 No Content if deleted, or 404 Not Found if the game does not exist
      */
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete game", description = "Deletes a game entity by its ID")
     public ResponseEntity<Void> deleteGame(@PathVariable String id) {
         log.info("DELETE /api/games/{} - Received request to delete game", id);
 

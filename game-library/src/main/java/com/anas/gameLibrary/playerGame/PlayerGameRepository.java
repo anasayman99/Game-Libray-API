@@ -1,4 +1,4 @@
-package com.anas.gameLibrary.player;
+package com.anas.gameLibrary.playerGame;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

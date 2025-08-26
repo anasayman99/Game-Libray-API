@@ -1,6 +1,9 @@
-package com.anas.gameLibrary.player;
+package com.anas.gameLibrary.playerGame;
 
 import com.anas.gameLibrary.game.GameRepository;
+import com.anas.gameLibrary.player.GameStatus;
+import com.anas.gameLibrary.player.Player;
+import com.anas.gameLibrary.player.PlayerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

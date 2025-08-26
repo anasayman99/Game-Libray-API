@@ -3,6 +3,8 @@ package com.anas.gameLibrary;
 import com.anas.gameLibrary.game.Game;
 import com.anas.gameLibrary.game.GameRepository;
 import com.anas.gameLibrary.player.*;
+import com.anas.gameLibrary.playerGame.PlayerGame;
+import com.anas.gameLibrary.playerGame.PlayerGameRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;

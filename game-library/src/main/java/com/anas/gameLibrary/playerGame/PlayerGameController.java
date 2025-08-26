@@ -1,5 +1,9 @@
-package com.anas.gameLibrary.player;
+package com.anas.gameLibrary.playerGame;
 
+import com.anas.gameLibrary.player.GameStatus;
+import com.anas.gameLibrary.player.Player;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +19,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/player-games")
+@Tag(name = "PlayerGames", description = "Endpoints for managing player-game relationships")
 public class PlayerGameController {
 
     private static final Logger log = LoggerFactory.getLogger(PlayerGameController.class);
@@ -37,6 +42,7 @@ public class PlayerGameController {
      * @return a list of {@link PlayerGame} entries for the player
      */
     @GetMapping("/player/{playerId}")
+    @Operation (summary = "Get games for player", description = "Returns a list of all games for a player")
     public ResponseEntity<List<PlayerGame>> getGamesByPlayer(@PathVariable String playerId) {
         log.info("Fetching games for player {}", playerId);
         return ResponseEntity.ok(playerGameService.getGamesByPlayer(playerId));
@@ -49,6 +55,7 @@ public class PlayerGameController {
      * @return a list of {@link PlayerGame} entries for the game
      */
     @GetMapping("/game/{gameId}")
+    @Operation (summary = "Get entries for game", description = "Returns a list of all entries for a game")
     public ResponseEntity<List<PlayerGame>> getPlayerGameEntriesByGame(@PathVariable String gameId) {
         log.info("Fetching entries for game {}", gameId);
         return ResponseEntity.ok(playerGameService.getPlayerGameEntriesByGame(gameId));
@@ -61,6 +68,7 @@ public class PlayerGameController {
      * @return the saved entry, or 400 Bad Request if the player or game does not exist
      */
     @PostMapping
+    @Operation (summary = "Save player-game entry", description = "Creates a new player-game entry")
     public ResponseEntity<PlayerGame> savePlayerGame(@Valid @RequestBody PlayerGame playerGame) {
         log.info("Saving game '{}' for player '{}'", playerGame.gameId(), playerGame.playerId());
 
@@ -82,6 +90,7 @@ public class PlayerGameController {
      * @return a list of {@link Player} entries who played the game
      */
     @GetMapping("/players-by-game/{gameId}")
+    @Operation (summary = "Get players for game", description = "Returns a list of all players for a game")
     public ResponseEntity<List<Player>> getPlayersByGame(@PathVariable String gameId) {
         log.info("Fetching players who played this game {}", gameId);
         return ResponseEntity.ok(playerGameService.getPlayersByGame(gameId));
@@ -95,6 +104,7 @@ public class PlayerGameController {
      * @return a list of game IDs matching the given status
      */
     @GetMapping("/status/{playerId}")
+    @Operation (summary = "Get games for player by status", description = "Returns a list of all games for a player filtered by status")
     public ResponseEntity<List<String>> getGamesByStatus(
             @PathVariable String playerId,
             @RequestParam GameStatus status) {
@@ -111,6 +121,7 @@ public class PlayerGameController {
      * @return the updated {@link PlayerGame} record, or 404 if not found
      */
     @PutMapping("/status")
+    @Operation (summary = "Update status for player-game entry", description = "Updates the status of a player-game entry")
     public ResponseEntity<PlayerGame> updateStatus(
             @RequestParam String playerId,
             @RequestParam String gameId,
@@ -135,6 +146,7 @@ public class PlayerGameController {
      * @return 204 No Content if deleted, or 404 Not Found if not found
      */
     @DeleteMapping("/{id}")
+    @Operation (summary = "Delete player-game entry", description = "Deletes a player-game entry by its ID")
     public ResponseEntity<Void> deletePlayerGame(@PathVariable String id) {
         log.info("Deleting PlayerGame {}", id);
 
