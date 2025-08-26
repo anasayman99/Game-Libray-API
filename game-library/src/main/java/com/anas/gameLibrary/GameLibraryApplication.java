@@ -16,15 +16,54 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 
+/**
+ * Main entry point for the Game Library Spring Boot application.
+ *
+ * This class boots the application and contains a data-loading routine
+ * that runs on startup. The routine seeds the database with initial
+ * data from JSON files located in the resources folder, but only if
+ * the relevant tables are empty.
+ *
+ * The seeding process works as follows:
+ * - If there are no players, the file players.json is loaded.
+ * - If there are no games, the file games.json is loaded.
+ * - If there are no collections, the file collections.json is loaded.
+ * - If there are no player-game entries, the file playersGames.json is loaded.
+ *
+ * Logging is provided throughout to make it clear whether data
+ * was inserted or skipped.
+ *
+ * Author: Anas Sadek
+ */
 @SpringBootApplication
 public class GameLibraryApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(GameLibraryApplication.class);
 
+	/**
+	 * Starts the Spring Boot application.
+	 *
+	 * @param args command line arguments passed to the application
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(GameLibraryApplication.class, args);
 	}
 
+	/**
+	 * Loads initial data into the database on startup if the repositories
+	 * are empty. Data is read from JSON files on the classpath and saved
+	 * through the corresponding repositories.
+	 *
+	 * The JSON files are deserialized with Jackson's ObjectMapper and mapped
+	 * into lists of entity objects.
+	 *
+	 * @param playerRepo repository for Player entities
+	 * @param gameRepo repository for Game entities
+	 * @param collectionRepo repository for GameCollection entities
+	 * @param playerGameRepo repository for PlayerGame entities
+	 * @param objectMapper Jackson mapper used to parse JSON files
+	 * @return a CommandLineRunner that performs the seeding logic
+	 */
 	@Bean
 	CommandLineRunner loadData(
 			PlayerRepository playerRepo,
